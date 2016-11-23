@@ -1,0 +1,15 @@
+
+#mon_ajout{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+img#mon_gif, img#mon_gif1{
+    width: 400px;
+    height: 250px;
+}
+
+#mon_ajout{
+
+}
