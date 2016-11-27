@@ -1,17 +1,15 @@
 
 
-
+ value = jQuery("#myinput").val();
 // A l'envoie du formulaire
 jQuery(function ($){
-
-
-    // Recuperer la value du champ
-    value = $("#myinput").val();
-
 
     $("#monbouton").on('click', (function(event) {
         // Desactiver evenement de base
         event.preventDefault();
+
+        // Recuperer la value du champ
+        value = jQuery("#myinput").val();
 
         // Envoie de la requete
         $.ajax({
@@ -23,8 +21,9 @@ jQuery(function ($){
         .done(function(json) {
 
             $("#mon_gif").attr('src', json.data.image_original_url);
-            console.log(json);
-            console.log("success left div");
+            $("#error_msg").empty();
+
+            //console.log("success left div");
 
         })
         .fail(function() {
@@ -41,6 +40,10 @@ jQuery(function ($){
             //console.log("Merci d'avoir cherché un Gif");
         }); 
 
+
+        // Recuperer la value du champ
+        value = jQuery("#myinput").val();
+
         // Envoie de la requete
         $.ajax({
             url: 'http://api.giphy.com/v1/gifs/translate?s=' + value + '&api_key=dc6zaTOxFJmzC',
@@ -52,10 +55,10 @@ jQuery(function ($){
         .done(function(json) {
 
             // La requete a fonctionnée
-            if ((value === "")===true){
+            if ((value === "")==true){
 
                 $("#error_msg1").html('Pas de gif');
-
+                $("#mon_gif1").attr('src', "");
             }
 
             else if((json.data.images === undefined)===true){
@@ -66,7 +69,8 @@ jQuery(function ($){
             else{
 
                 $("#mon_gif1").attr('src', json.data.images.downsized_large.url );
-                console.log("success right div");
+                $("#error_msg1").empty();
+                //console.log("success right div");
             }
         })
 

@@ -18,10 +18,10 @@ define( 'MON_APPEL', plugin_dir_url( __FILE__ ) );
 function MV_add_input(){
 
 echo "<div id='mon_ajout'>
-            <form id='myform' >
+            <form id='myform'>
                 <label for='myinput'>Chercher un Gif</label><br />
                 <input type='text' id='myinput' name='myinput'/>
-                <button id='monbouton' type='submit'>Chercher</button>
+                <button id='monbouton' type='submit'>Search</button>
                 <div id='msg_complete'></div>
             </form>
             <div>
