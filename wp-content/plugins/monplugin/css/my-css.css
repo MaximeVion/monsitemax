@@ -1,12 +1,26 @@
 body{
     position: relative;
 }
+
+form{
+    text-align: center;
+}
+
+#monbouton{
+    margin-top: 10px;   
+}
+#monbouton:hover, #monbouton:visited {
+    background-color: tomato;
+}
+
 #mon_ajout{
+    position: relative;
     width: 99%;
     display: flex;
     justify-content: space-around;
     align-items: center;
     margin-top: 25px;
+    padding-bottom: 30px;
 }
 
 
@@ -16,6 +30,11 @@ img#mon_gif, img#mon_gif1{
     border: none;
 }
 
-#error_msg, #error_msg1{
-    color: red;
+#error_msg, #error_msg1, #msg_complete{
+    text-align: center;
+    color: tomato;
+    height: 20px;
+    position: absolute;
+    bottom: 0;
+
 }

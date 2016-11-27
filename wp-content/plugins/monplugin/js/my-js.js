@@ -4,17 +4,17 @@
 // A l'envoie du formulaire
 jQuery(function ($){
 
+
+    // Recuperer la value du champ
+    value = $("#myinput").val();
+
+
     $("#monbouton").on('click', (function(event) {
         // Desactiver evenement de base
         event.preventDefault();
 
-        // Recuperer la value du champ
-        value = $("#myinput").val();
-
-
         // Envoie de la requete
         $.ajax({
-            //url: 'http://api.giphy.com/v1/gifs/translate?s=' + value + '&api_key=dc6zaTOxFJmzC',
             url: 'http://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC&tag=' + value,
             type: 'GET',
             dataType: 'json',
@@ -22,28 +22,28 @@ jQuery(function ($){
         })
         .done(function(json) {
 
-            // La requete a fonctionnée
             $("#mon_gif").attr('src', json.data.image_original_url);
-            console.log("success 1 div");
+            console.log(json);
+            console.log("success left div");
+
         })
         .fail(function() {
 
-            console.log("failure");
+            //La requete n'a pas fonctionnée
+            $("#error_msg1").html('Une erreur s\'est produite');
+            $("#error_msg").html('Une erreur s\'est produite');
 
         })
-        .always(function() { 
+       .always(function() { 
 
             // Peut importe, se lance tout le temps
-            console.log("complete");
-        });
-
-        // Recuperer la value du champ
-        value = $("#myinput").val();
+            $("#msg_complete").html('Merci d\'avoir cherché un Gif');
+            //console.log("Merci d'avoir cherché un Gif");
+        }); 
 
         // Envoie de la requete
         $.ajax({
             url: 'http://api.giphy.com/v1/gifs/translate?s=' + value + '&api_key=dc6zaTOxFJmzC',
-            //url: 'http://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC&tag=' + value,
             type: 'GET',
             dataType: 'json',
             data: {}
@@ -52,24 +52,39 @@ jQuery(function ($){
         .done(function(json) {
 
             // La requete a fonctionnée
-            $("#mon_gif1").attr('src', json.data.images.downsized_large.url );
+            if ((value === "")===true){
 
-            console.log(json);
-            console.log("success 2 div");
+                $("#error_msg1").html('Pas de gif');
+
+            }
+
+            else if((json.data.images === undefined)===true){
+
+                $("#error_msg1").html('Pas de gif');
+            }
+
+            else{
+
+                $("#mon_gif1").attr('src', json.data.images.downsized_large.url );
+                console.log("success right div");
+            }
         })
+
         .fail(function() {
 
             // La requete n'a pas fonctionnée
-            console.log("failure1");
+            $("#error_msg1").html('Une erreur s\'est produite');
+            $("#error_msg").html('Une erreur s\'est produite');
         })
-        .always(function() {
+
+       .always(function() { 
 
             // Peut importe, se lance tout le temps
-            console.log("complete");
+            $("#msg_complete").html('Merci d\'avoir cherché un Gif');
+            //console.log("Merci d'avoir cherché un Gif");
         });
-}));
+    }));
 });
-
 
 
 

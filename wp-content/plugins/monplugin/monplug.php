@@ -22,6 +22,7 @@ echo "<div id='mon_ajout'>
                 <label for='myinput'>Chercher un Gif</label><br />
                 <input type='text' id='myinput' name='myinput'/>
                 <button id='monbouton' type='submit'>Chercher</button>
+                <div id='msg_complete'></div>
             </form>
             <div>
                 <img id='mon_gif' src=''>
