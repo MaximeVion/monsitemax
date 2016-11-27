@@ -1,6 +1,3 @@
-
-
- value = jQuery("#myinput").val();
 // A l'envoie du formulaire
 jQuery(function ($){
 
