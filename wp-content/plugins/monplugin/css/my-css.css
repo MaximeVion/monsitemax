@@ -1,15 +1,21 @@
-
-#mon_ajout{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+body{
+    position: relative;
 }
+#mon_ajout{
+    width: 99%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 25px;
+}
+
 
 img#mon_gif, img#mon_gif1{
     width: 400px;
     height: 250px;
+    border: none;
 }
 
-#mon_ajout{
-
+#error_msg, #error_msg1{
+    color: red;
 }
